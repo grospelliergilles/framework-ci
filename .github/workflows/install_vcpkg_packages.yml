@@ -16,7 +16,7 @@ jobs:
       VCPKG_DISABLE_METRICS: 1
       VCPKG_BUILD_DIR: '${{ github.workspace }}/../../build_base/framework-ci/vcpkg'
       VCPKG_PUSH_HASH_PACKAGE_NAME: '1.0.16-${{ matrix.os }}-${{ matrix.triplet }}'
-      VCPKG_PREINSTALL_HASH_PACKAGE_NAME: '1.0.15-${{ matrix.os }}-${{ matrix.triplet }}'
+      VCPKG_PREINSTALL_HASH_PACKAGE_NAME: '1.0.17-${{ matrix.os }}-${{ matrix.triplet }}'
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
       DOTNET_VERSION: '6.x'
@@ -115,7 +115,7 @@ jobs:
         shell: 'bash'
         continue-on-error: true
         run: |
-          cmake -DHASH_PACKAGE_NAME="${{ env.VCPKG_PUSH_HASH_PACKAGE_NAME }}" -DNUGET_API_KEY="${{ secrets.GITHUB_TOKEN }}" -DVCPKG_BUILD_DIR='${{ env.VCPKG_BUILD_DIR }}' -P '${{ env.BUILD_COMMANDS_ROOT }}/vcpkg_cache/DoTar.cmake'
+          #cmake -DHASH_PACKAGE_NAME="${{ env.VCPKG_PUSH_HASH_PACKAGE_NAME }}" -DNUGET_API_KEY="${{ secrets.GITHUB_TOKEN }}" -DVCPKG_BUILD_DIR='${{ env.VCPKG_BUILD_DIR }}' -P '${{ env.BUILD_COMMANDS_ROOT }}/vcpkg_cache/DoTar.cmake'
           ls -lart '${{ env.VCPKG_BUILD_DIR }}'
           du -sh '${{ env.VCPKG_BUILD_DIR }}'
           ls -lart '${{ env.BUILD_COMMANDS_ROOT }}/vcpkg_cache'
